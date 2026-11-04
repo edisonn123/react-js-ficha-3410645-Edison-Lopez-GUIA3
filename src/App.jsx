@@ -97,7 +97,7 @@ function App() {
 
     try {
         await crearUsuario({
-            nombre,
+            nombre: nombreUsuario,
             telefono,
             edad: Number(edad)
         });
@@ -159,8 +159,38 @@ function App() {
         <BuscadorPokemon />
         <BuscadorJugador />
 
+        <h2>Seccion de Usuarios</h2>      
 
-        <h2>Seccion de Usuarios</h2>
+        <form onSubmit={guardarUsuario}>
+
+          <input
+              value={nombreUsuario}
+              onChange={(e) => setNombreUsuario(e.target.value)}
+              placeholder="Nombre"
+              required
+          />
+
+          <input
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+              placeholder="Telefono"
+          />
+
+          <input
+              type="number"
+              value={edad}
+              onChange={(e) => setEdad(e.target.value)}
+              placeholder="Edad"
+              required
+          />
+
+          <button type="submit">
+              Guardar
+          </button>
+
+        </form>
+
+
         <section className="usuarios-seccion">
           <h2>Usuarios registrados</h2>
           {loading && <p>Consultando información de usuarios...</p>}

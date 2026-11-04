@@ -9,7 +9,6 @@ CORS(app)
 def listar_usuarios():
     conexion = get_connection()
     cursor = conexion.cursor(dictionary=True)
-
     cursor.execute("SELECT * FROM usuarios ORDER BY id DESC")
     datos = cursor.fetchall()
 
